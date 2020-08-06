@@ -4,6 +4,7 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <back-to-top></back-to-top>
     <router-view />
   </div>
 </template>
@@ -15,6 +16,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 1500px;
 }
 
 #nav {
