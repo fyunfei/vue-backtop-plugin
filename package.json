@@ -1,7 +1,7 @@
 {
-  "name": "vue-backtop",
+  "name": "vue-backtop-plugin",
   "description": "A Vue.js backTop plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "fyunfei <623229343@qq.com>",
   "license": "MIT",
   "private": false,

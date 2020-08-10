@@ -1,0 +1,13 @@
+# 忽略目录
+examples/
+packages/
+public/
+
+# 忽略指定文件
+webpack.config.js
+babel.config.js
+.babelrc
+.gitignore
+.editorconfig
+*.map
+index.html

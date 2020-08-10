@@ -1,6 +1,6 @@
 <template>
-  <div v-show="backTopVisible" class="back-container" @click="backToTop">
-    <i class="iconfont icon-huojian"></i>
+  <div v-show="backTopVisible" class="back-container" ref="back-con" @click="backToTop">
+    <i class="iconfont icon-huojian" ref="rocket"></i>
   </div>
 </template>
 
@@ -8,6 +8,16 @@
 import "../css/iconfont.css";
 export default {
   name: "BackToTop",
+  props:{
+    width:{
+      type:Number,
+      default: 60
+    },
+    height:{
+      type:Number,
+      default: 60
+    },
+  },
   data() {
     return {
       backTopVisible: false,
@@ -16,6 +26,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      this.$refs['back-con'].style = `width:${this.width}px;height:${this.height}px`
+      this.$refs['rocket'].style = `font-size:${this.width*2/3}px`
       this.judgeScrollTop();
       window.addEventListener("scroll", this.judgeScrollTop, false);
     });
@@ -54,15 +66,14 @@ export default {
   position: fixed;
   right: 30px;
   bottom: 30px;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
   border-radius: 50%;
   background: rgba($color: #009688, $alpha: 0.6);
   .icon-huojian {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     color: #fff;
-    font-size: 40px;
   }
 }
 </style>
