@@ -17,6 +17,18 @@ export default {
       type:Number,
       default: 60
     },
+    background:{
+      type:String,
+      default: '#009688'
+    },
+    visibleHeight:{
+      type:Number,
+      default: 500
+    },
+    speed:{
+      type:Number,
+      default: 100
+    }
   },
   data() {
     return {
@@ -26,17 +38,22 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$refs['back-con'].style = `width:${this.width}px;height:${this.height}px`
-      this.$refs['rocket'].style = `font-size:${this.width*2/3}px`
       this.judgeScrollTop();
       window.addEventListener("scroll", this.judgeScrollTop, false);
     });
   },
   methods: {
+    /**
+     * @description 判断滚动条的高度控制回到顶部按钮的显示隐藏
+     */
     judgeScrollTop() {
       const scrollTop =
         document.body.scrollTop || document.documentElement.scrollTop;
-      this.backTopVisible = scrollTop > 500;
+      this.backTopVisible = scrollTop > this.visibleHeight;
+      if(this.backTopVisible){
+        this.$refs['back-con'].style = `width:${this.width}px;height:${this.height}px;background:${this.background}`
+        this.$refs['rocket'].style = `font-size:${this.width*2/3}px`
+      }
     },
     /**
      * @description 获取当前滚动高度进行动画处理
@@ -46,7 +63,7 @@ export default {
       const scrollTop =
         document.body.scrollTop || document.documentElement.scrollTop;
       document.body.scrollTop = document.documentElement.scrollTop =
-        scrollTop > 3000 ? scrollTop - 500 : scrollTop - 100;
+        scrollTop-this.speed
       if (
         document.documentElement.scrollTop > 0 ||
         document.body.scrollTop > 0
@@ -67,7 +84,6 @@ export default {
   right: 30px;
   bottom: 30px;
   border-radius: 50%;
-  background: rgba($color: #009688, $alpha: 0.6);
   .icon-huojian {
     position: absolute;
     top: 50%;
