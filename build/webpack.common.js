@@ -1,17 +1,9 @@
-var path = require('path')
-var webpack = require('webpack')
 
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 module.exports = {
-  // entry: './src/main.js',
-  entry: './src/lib/index.js',
-  output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    // filename: 'build.js',
-    filename: 'vue-backtop.js',
-    libraryTarget: 'umd',
-    umdNamedDefine: true
-  },
+  plugins: [
+    new CleanWebpackPlugin()
+  ],
   module: {
     rules: [
       {
@@ -85,34 +77,9 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true,
-    overlay: true
-  },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
 }
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
-}
+
