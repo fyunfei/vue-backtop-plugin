@@ -1,6 +1,6 @@
 # vue-backtop-plugin
 
-> 返回顶部组件 支持IE10 暂不支持SSR
+> 返回顶部组件 支持IE10 
 
 > @todo 使用插槽提高扩展性
 
@@ -15,10 +15,18 @@
  speed | Number | 100 | 回到顶部的速度
 
 # Example
-
 ```javascript
   import BackToTop from "vue-backtop-plugin/dist/vue-backtop";
   Vue.use(BackToTop);
+```
+
+```html
+  // nuxt中使用
+  // 正常引入插件流程
+  // 需要在使用插件时通过 放在no-ssr组件中
+  <no-ssr>
+    <back-to-top></back-to-top>
+  </no-ssr>
 ```
 
 # HTML
