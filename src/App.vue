@@ -22,6 +22,7 @@
       background="#f00"
       :visible-height="500" 
       :speed="100"></back-to-top>
+      <p>test</p>
   </div>
 </template>
 
